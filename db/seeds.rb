@@ -21,3 +21,8 @@ end
   p = Post.new(user: user, content: content)
   p.save
 end
+
+Post.all.each do |post|
+  post.likes.create!( User.all.shuffle.first( rand(10) ).collect{|user| [user_id: user.id]} )
+end
+
