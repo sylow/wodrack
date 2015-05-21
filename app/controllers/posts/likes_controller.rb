@@ -3,7 +3,8 @@ class Posts::LikesController < ApplicationController
   # Create a like if no record found
   # Destroy the like if it was liked before
   def toggle
-    like = current_user.likes.first_or_initialize( post: post )
+    like = current_user.likes.find_or_initialize_by( post: post )
+    p like
             
     if like.persisted? # unlike if it is in our liked posts
       like.destroy    
@@ -18,4 +19,5 @@ class Posts::LikesController < ApplicationController
   def post
     @post ||= Post.find( params[:post_id] )
   end
+  
 end
