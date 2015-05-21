@@ -1,3 +1,8 @@
-<p><strong><%= link_to post.user.name, post.user %></strong> on <%= post.created_at %>:</p>
+<p><strong><%= link_to post.user.name, post.user %></strong> on <%= post.created_at %>:    
+   (<span class="count"><%=post.likes.count%></span>)
+   <%= like_or_unlike_link(current_user, post)%>
+</p> 
+
+
 <p><%= post.content %></p>
 <hr />
