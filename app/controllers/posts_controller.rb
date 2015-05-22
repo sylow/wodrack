@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.includes(:user).all
+    @posts = Post.includes(:user).includes(:likes).all
   end
 
   # GET /posts/1
